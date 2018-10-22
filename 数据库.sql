@@ -1,7 +1,7 @@
 drop database `august`;
 create database `august`;
 use `august`;
-#用户组
+#1、用户组
 # drop table user_group
 create table if not exists `user_group`
 (
@@ -12,7 +12,7 @@ create table if not exists `user_group`
 
  insert into `user_group` values('E1001','第二组',''),('E1002','第三组','');
 select * from user_group;
-# 管理员表
+# 2、管理员表
 create table if not exists `admin`
 (
 	adm_id nvarchar(10) not null primary key comment'管理员编号',
@@ -33,7 +33,7 @@ insert into `admin` values('U1007','刘大佬',1,'E1002',0,'珠海','B栋501','6
 insert into `admin` values('U1010','韦大仙',1,'E1002',1,'珠海','B栋501','684321','13728279534','姓韦的');
 select * from 	`admin`;
 
-#省份表
+#3、省份表
 create table if not exists `province`
 (
 	pro_id nvarchar(10) primary key not null comment '省份id',
@@ -43,7 +43,7 @@ create table if not exists `province`
 	insert into `province` values('S1001','广东省'),('S1002','江西省');
 	select * from `province`;
 
-# 城市表 drop table city;
+# 4、城市表 drop table city;
 create table if not exists `city`
 (
 	cit_id nvarchar(10) not null primary key comment'城市id',
@@ -54,7 +54,7 @@ create table if not exists `city`
 	insert into `city` values('C1001','S1001','珠海市'),('C1002','S1002','赣州市');
 	insert into `city` values('C1003','S1003','柳州市'),('C1004','S1004','来宾市');
 
-#城市区域
+#5、城市区域
 create table if not exists `region`
 (
 	reg_id nvarchar(10) not null primary key comment'区域id',
@@ -64,7 +64,7 @@ create table if not exists `region`
 
 	insert into `region` values('R1001','于都县','C1002'),('R1002','斗门区','C1001');
 	select * from `region`;
-# 交接单
+# 6、交接单
 create table if not exists `handover`
 (
 	han_start_city nvarchar(10) primary key not null comment'起点城市',
@@ -79,7 +79,7 @@ create table if not exists `handover`
 	insert into `handover` values('柳州市','来宾市','小林市',1,now(),'');
 	select * from `handover`;
 
-# 订单 drop table order
+# 7、订单 drop table order
 create table if not exists `order`
 (
 	ord_id nvarchar(10) primary key comment'主键',
@@ -107,7 +107,7 @@ create table if not exists `order`
 	insert into `order` values('D1001',3,'87765646677','白白大礼包',3,'欧咳咳','南方IT学院','广西省来宾市',1,'15476879872','刘大仙','13718071824','珠海市','广州市','赣州市',16.24,5.0,21.24,'专属运输车辆','');
 	select * from `order`;
 
-#消费者 drop table consumer
+#8、消费者 drop table consumer
 create table if not exists `consumer`
 (
 	con_id nvarchar(10) primary key not null comment'消费者id',
@@ -125,7 +125,7 @@ create table if not exists `consumer`
 	select * from `consumer`;
 
 
-# 路线表
+# 9、路线表
 create table if not exists `route`
 (
 	rou_id nvarchar(10) not null primary key comment'路线编号',
@@ -144,7 +144,7 @@ create table if not exists `route`
 	select * from `route`;
 
 
-# 车辆
+# 10、车辆
 create table if not exists `vehicle`
 (
 	veh_id nvarchar(10) not null primary key comment'车辆编号(主键)',
@@ -159,7 +159,7 @@ create table if not exists `vehicle`
 	insert into `vehicle`(veh_id,veh_type,veh_address,rou_id,veh_birth,veh_purchase_date,veh_remarks) values('1','E4682','南方场地',1,'2018-10-1',now(),'');
 select * from vehicle;
 
-# 配送点
+# 11、配送点
 create table if not exists `distribution`
 (
 	dis_id int not null primary key comment'配送点id(主键)',
@@ -172,7 +172,7 @@ create table if not exists `distribution`
 	dis_remarks nvarchar(50) comment'备注',
 	foreign key(adm_id) references admin(adm_id)
 );
-#配送范围
+#12、配送范围
 create table if not exists `distribution_scope`
 (
 	distr_id int not null primary key comment'配送区域id',
