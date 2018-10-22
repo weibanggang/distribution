@@ -10,7 +10,7 @@ create table if not exists `user_group`
 	us_remarks nvarchar(50) null comment '备注'
 );
 
- insert into `user_group` values('E1001','忠诚组',''),('E1002','忠厚组','');
+ insert into `user_group` values('E1001','第二组',''),('E1002','第三组','');
 select * from user_group;
 # 管理员表
 create table if not exists `admin`
@@ -28,8 +28,8 @@ create table if not exists `admin`
 	foreign key(us_id) references user_group(us_id)
 );
 
-insert into `admin` values('U1001','欧大仙',1,'E1001',1,'珠海','B栋501','123456','13728298752','姓欧的');
-insert into `admin` values('U1007','刘大仙',1,'E1002',0,'珠海','B栋501','654321','13728279934','姓刘的');
+insert into `admin` values('U1001','欧可乐',1,'E1001',1,'珠海','B栋501','123456','13728298752','姓欧的');
+insert into `admin` values('U1007','刘大佬',1,'E1002',0,'珠海','B栋501','654321','13728279934','姓刘的');
 insert into `admin` values('U1010','韦大仙',1,'E1002',1,'珠海','B栋501','684321','13728279534','姓韦的');
 select * from 	`admin`;
 
@@ -52,7 +52,7 @@ create table if not exists `city`
 );
 	
 	insert into `city` values('C1001','S1001','珠海市'),('C1002','S1002','赣州市');
-	
+	insert into `city` values('C1003','S1003','柳州市'),('C1004','S1004','来宾市');
 
 #城市区域
 create table if not exists `region`
@@ -76,6 +76,7 @@ create table if not exists `handover`
 );
 	
 	insert into `handover` values('珠海市','赣州市','朝阳市',1,now(),'');
+	insert into `handover` values('柳州市','来宾市','小林市',1,now(),'');
 	select * from `handover`;
 
 # 订单 drop table order
@@ -103,7 +104,7 @@ create table if not exists `order`
 	ord_remarks nvarchar(50) comment'备注'
 );
 
-	insert into `order` values('D1001',3,'87765646677','零食大礼包',3,'欧大仙','南方IT学院','江西省赣州市于都县',1,'15476879872','刘大仙','13718071824','珠海市','广州市','赣州市',16.24,5.0,21.24,'专属运输车辆','');
+	insert into `order` values('D1001',3,'87765646677','白白大礼包',3,'欧咳咳','南方IT学院','广西省来宾市',1,'15476879872','刘大仙','13718071824','珠海市','广州市','赣州市',16.24,5.0,21.24,'专属运输车辆','');
 	select * from `order`;
 
 #消费者 drop table consumer
